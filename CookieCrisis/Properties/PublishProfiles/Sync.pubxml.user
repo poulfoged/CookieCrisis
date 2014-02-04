@@ -13,7 +13,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/01/2014 17:09:16</publishTime>
     </File>
     <File Include="bin/CookieCrisis.dll">
-      <publishTime>02/04/2014 13:56:46</publishTime>
+      <publishTime>02/04/2014 14:56:51</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>02/01/2014 17:09:16</publishTime>
@@ -48,11 +48,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>02/01/2014 17:09:02</publishTime>
     </File>
+    <File Include="Images/check.png">
+      <publishTime>02/04/2014 14:58:59</publishTime>
+    </File>
     <File Include="packages.config">
       <publishTime>02/01/2014 17:09:17</publishTime>
     </File>
     <File Include="Scripts/PrivacyController.js">
-      <publishTime>02/04/2014 14:11:04</publishTime>
+      <publishTime>02/04/2014 15:25:52</publishTime>
     </File>
     <File Include="Styles/Style.css">
       <publishTime>02/03/2014 22:30:26</publishTime>
@@ -76,7 +79,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/01/2014 17:09:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/04/2014 13:56:47</publishTime>
+      <publishTime>02/04/2014 14:56:51</publishTime>
     </File>
   </ItemGroup>
 </Project>

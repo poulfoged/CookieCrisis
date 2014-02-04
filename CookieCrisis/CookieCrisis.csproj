@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\check.png" />
     <Content Include="Scripts\PrivacyController.js" />
     <Content Include="Styles\Style.css">
       <DependentUpon>Style.less</DependentUpon>

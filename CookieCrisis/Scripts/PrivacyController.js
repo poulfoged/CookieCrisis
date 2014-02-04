@@ -76,6 +76,8 @@ var Privacy;
                 if (stored[0].Setting) {
                     if (index++ < privacySettings.length - 1)
                         this.checkPrivacy(privacySettings, index);
+                    else
+                        this.watermark();
 
                     return;
                 } else {

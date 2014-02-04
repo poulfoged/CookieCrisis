@@ -99,7 +99,9 @@ module Privacy {
                 if (stored[0].Setting) {
                     if (index++ < privacySettings.length - 1)
                         this.checkPrivacy(privacySettings, index);
-                    
+                    else
+                        this.watermark();
+
                     return;
                 } else {
                     window.location.href = 'http://privacy.devchamp.com/privacy/siteinfo?url=' + window.location.href;
