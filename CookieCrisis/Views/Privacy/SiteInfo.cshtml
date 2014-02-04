@@ -1,0 +1,46 @@
+﻿@model CookieCrisis.Models.PrivacytViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SiteInfo for @Model.Site.Host</title>
+    <link href="~/Styles/Style.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>
+            The site @Model.Site.Host does not meet your privacy settings
+        </h1>
+    </header>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        Policy name
+                    </td>
+                    <td>
+                        Site's policy
+                    </td>
+                    <td>
+                        Your preference
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var setting in Model.BaseSettings)
+                {
+                    var userSetting = Model.UserSettings.Any(p => p.Name == setting && p.Setting.HasValue) ? Model.UserSettings.Single(p => p.Name == setting).Setting.Value.ToString() : "not set";
+                    var siteSetting = (Model.Policies.Any(p => p.Name == setting && p.Setting.HasValue) ? Model.Policies.Single(p => p.Name == setting).Setting.Value.ToString() : "not set");
+                    <tr class="@(((siteSetting == "False" || siteSetting == userSetting) && siteSetting != "not set") ? "good" : "bad")">
+                        <td>@(setting.Substring(0,1).ToUpperInvariant() + setting.Substring(1) )</td>
+                        <td style="text-align: center">@siteSetting</td>
+                        <td style="text-align: center">@userSetting</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </section>
+</body>

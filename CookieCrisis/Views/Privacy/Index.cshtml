@@ -1,0 +1,79 @@
+﻿@model CookieCrisis.Models.PrivacyScriptViewModel
+@{
+    Layout = null;
+}
+
+var style = '@(@"dialog {
+                width: 100px;
+            }
+
+
+            dialog {
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+                border: solid;
+                padding: 1em;
+                background: white;
+                color: black;
+                width: -moz-fit-content;
+                width: -webkit-fit-content;
+                width: fit-content;
+                height: -moz-fit-content;
+                height: -webkit-fit-content;
+                height: fit-content;
+                display: none;
+                border: medium solid #999999;
+                border-radius: 6px;
+                font-family: helvetica, arial;
+            }
+
+                dialog[open] {
+                    display: block;
+                }
+
+            .backdrop {
+                position: fixed;
+                background: rgba(0,0,0,0.1);
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            dialog div:first-of-type {
+                text-transform: uppercase;
+            }
+
+            dialog div:nth-child(2) {
+                margin: 20px 0;
+                text-align: right;
+            }
+
+            dialog button {
+                margin: 4px;
+                padding: 3px 10px;
+            }".Replace(Environment.NewLine, " "))';
+
+
+
+var sitesPrivacySettings = @Html.Raw(Json.Encode(Model.Policies));
+
+var usersPrivacySettings = @Html.Raw(Json.Encode(Model.UserSettings));
+
+
+@Html.Raw(Model.Script)
+
+var dialogPolyfill=function(){var f=window.document.addEventListener?function(a,b,d){a.addEventListener(b,d)}:function(a,b,d){a.attachEvent("on"+b,d)},c={reposition:function(a){a.style.top=(document.body.scrollTop||document.documentElement.scrollTop)+(window.innerHeight-a.offsetHeight)/2+"px";a.dialogPolyfillInfo.isTopOverridden=!0},inNodeList:function(a,b){for(var d=0;d<a.length;++d)if(a[d]==b)return!0;return!1},isInlinePositionSetByStylesheet:function(a){for(var b=0;b<document.styleSheets.length;++b){var d=
+document.styleSheets[b],g=null;try{g=d.cssRules}catch(f){}if(g)for(d=0;d<g.length;++d){var h=g[d],e=null;try{e=document.querySelectorAll(h.selectorText)}catch(k){}if(e&&c.inNodeList(e,a)&&(e=h.style.getPropertyValue("top"),h=h.style.getPropertyValue("bottom"),e&&"auto"!=e||h&&"auto"!=h))return!0}}return!1},needsCentering:function(a){return"absolute"!=getComputedStyle(a).position||"auto"!=a.style.top&&""!=a.style.top||"auto"!=a.style.bottom&&""!=a.style.bottom?!1:!c.isInlinePositionSetByStylesheet(a)},
+showDialog:function(a){if(this.open)throw"InvalidStateError: showDialog called on open dialog";this.open=!0;this.setAttribute("open","open");if(a){var b=null,d=null,g=function(a){for(var c=0;c<a.children.length;c++){var e=a.children[c];null!==b||e.disabled||"BUTTON"!=e.nodeName&&"INPUT"!=e.nodeName&&"KEYGEN"!=e.nodeName&&"SELECT"!=e.nodeName&&"TEXTAREA"!=e.nodeName||(b=e);if(e.autofocus){d=e;break}g(e);if(null!==d)break}};g(this);null!==d?d.focus():null!==b&&b.focus()}c.needsCentering(this)&&c.reposition(this);
+a&&(this.dialogPolyfillInfo.modal=!0,c.dm.pushDialog(this))},close:function(a){if(!this.open)throw new InvalidStateError;this.open=!1;this.removeAttribute("open");"undefined"!=typeof a&&(this.returnValue=a);this.dialogPolyfillInfo.isTopOverridden&&(this.style.top="auto");this.dialogPolyfillInfo.modal&&c.dm.removeDialog(this);document.createEvent?(a=document.createEvent("HTMLEvents"),a.initEvent("close",!0,!0)):a=new Event("close");this.dispatchEvent(a);return this.returnValue},registerDialog:function(a){a.show&&
+console.warn("This browser already supports <dialog>, the polyfill may not work correctly.");f(a,"dialog_submit",function(b){a.close(b.detail.target.value);b.preventDefault();b.stopPropagation()});a.show=c.showDialog.bind(a,!1);a.showModal=c.showDialog.bind(a,!0);a.close=c.close.bind(a);a.dialogPolyfillInfo={}}};MAX_PENDING_DIALOGS=TOP_LAYER_ZINDEX=1E5;c.DialogManager=function(){this.pendingDialogStack=[];this.overlay=document.createElement("div");this.overlay.style.width="100%";this.overlay.style.height=
+"100%";this.overlay.style.position="fixed";this.overlay.style.left="0px";this.overlay.style.top="0px";this.overlay.style.backgroundColor="rgba(0,0,0,0.0)";f(this.overlay,"click",function(a){var b=document.createEvent("MouseEvents");b.initMouseEvent(a.type,a.bubbles,a.cancelable,window,a.detail,a.screenX,a.screenY,a.clientX,a.clientY,a.ctrlKey,a.altKey,a.shiftKey,a.metaKey,a.button,a.relatedTarget);document.body.dispatchEvent(b)});f(window,"load",function(){var a=document.getElementsByTagName("form");
+Array.prototype.forEach.call(a,function(a){"dialog"==a.getAttribute("method")&&f(a,"click",function(a){if("submit"==a.target.type){var b;CustomEvent?b=new CustomEvent("dialog_submit",{bubbles:!0,detail:{target:a.target}}):(b=document.createEvent("HTMLEvents"),b.initEvent("dialog_submit",!0,!0),b.detail={target:a.target});this.dispatchEvent(b);a.preventDefault()}})})})};c.dm=new c.DialogManager;c.DialogManager.prototype.blockDocument=function(){document.body.contains(this.overlay)||document.body.appendChild(this.overlay)};
+c.DialogManager.prototype.unblockDocument=function(){document.body.removeChild(this.overlay)};c.DialogManager.prototype.updateStacking=function(){if(0==this.pendingDialogStack.length)this.unblockDocument();else{this.blockDocument();for(var a=TOP_LAYER_ZINDEX,b=0;b<this.pendingDialogStack.length;b++){b==this.pendingDialogStack.length-1&&(this.overlay.style.zIndex=a++);var d=this.pendingDialogStack[b];d.dialogPolyfillInfo.backdrop.style.zIndex=a++;d.style.zIndex=a++}}};c.DialogManager.prototype.cancelDialog=
+function(a){if(27===a.keyCode&&0<this.pendingDialogStack.length){a.preventDefault();a.stopPropagation();a=this.pendingDialogStack.slice(-1)[0];var b;a&&(CustomEvent?b=new CustomEvent("cancel",{bubbles:!1}):(b=document.createEvent("HTMLEvents"),b.initEvent("cancel",!1,!0)),a.dispatchEvent(b)&&a.close())}};c.DialogManager.prototype.pushDialog=function(a){if(this.pendingDialogStack.length>=MAX_PENDING_DIALOGS)throw"Too many modal dialogs";var b=document.createElement("div");b.classList.add("backdrop");
+f(b,"click",function(b){var c=document.createEvent("MouseEvents");c.initMouseEvent(b.type,b.bubbles,b.cancelable,window,b.detail,b.screenX,b.screenY,b.clientX,b.clientY,b.ctrlKey,b.altKey,b.shiftKey,b.metaKey,b.button,b.relatedTarget);a.dispatchEvent(c)});a.parentNode.insertBefore(b,a.nextSibling);a.dialogPolyfillInfo.backdrop=b;this.pendingDialogStack.push(a);this.updateStacking()};c.DialogManager.prototype.removeDialog=function(a){var b=this.pendingDialogStack.indexOf(a);-1!=b&&(this.pendingDialogStack.splice(b,
+1),b=a.dialogPolyfillInfo.backdrop,b.parentNode.removeChild(b),a.dialogPolyfillInfo.backdrop=null,this.updateStacking())};f(document,"keydown",c.dm.cancelDialog.bind(c.dm));return c}();
+    

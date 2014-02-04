@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>Z:\DataDrive\Deploy\Sites\privacy.devchamp.com</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/01/2014 17:09:16</publishTime>
+    </File>
+    <File Include="bin/CookieCrisis.dll">
+      <publishTime>02/04/2014 13:56:46</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>02/01/2014 17:09:16</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>02/01/2014 17:09:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>02/01/2014 17:09:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>02/01/2014 17:09:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/01/2014 17:09:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>02/01/2014 17:09:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>02/01/2014 17:09:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>02/01/2014 17:09:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>02/01/2014 17:09:16</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>02/01/2014 17:09:17</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>02/01/2014 17:09:02</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>02/01/2014 17:09:17</publishTime>
+    </File>
+    <File Include="Scripts/PrivacyController.js">
+      <publishTime>02/04/2014 14:11:04</publishTime>
+    </File>
+    <File Include="Styles/Style.css">
+      <publishTime>02/03/2014 22:30:26</publishTime>
+    </File>
+    <File Include="Styles/Style.less">
+      <publishTime>02/03/2014 22:30:26</publishTime>
+    </File>
+    <File Include="Styles/Style.min.css">
+      <publishTime>02/03/2014 22:30:26</publishTime>
+    </File>
+    <File Include="Views/Privacy/Index.cshtml">
+      <publishTime>02/03/2014 19:48:20</publishTime>
+    </File>
+    <File Include="Views/Privacy/SiteInfo.cshtml">
+      <publishTime>02/04/2014 09:04:31</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>02/01/2014 17:09:02</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>02/01/2014 17:09:02</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/04/2014 13:56:47</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
